@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class BankMenu {
@@ -22,9 +22,10 @@ public class BankMenu {
     }
 
     public void Intro(){
-        System.out.println("____________________________________");
-        System.out.println("|       Welcome to JAVA Bank!      |");
-        System.out.println("------------------------------------");
+        System.out.println("________________________________________________");
+        System.out.println("|           Welcome to Secure Bank!            |");
+        System.out.println("|       Where you know you money is safe!      |");
+        System.out.println("------------------------------------------------");
     }
 
     public void Menu(){
@@ -41,7 +42,7 @@ public class BankMenu {
             try{
                 options = Integer.parseInt(fromTerminal.nextLine());
             }
-            catch (Exception e){
+            catch (NumberFormatException e){
                 System.out.println("Invalid option. Try Again.");
             }
 
@@ -56,7 +57,7 @@ public class BankMenu {
 
     public void softwareAction(int options){
         switch(options){
-            case 1: // List Balances
+            case 1: // User SIgn in
             case 2:
                 createAccount();
                 break;
@@ -70,9 +71,11 @@ public class BankMenu {
     }
 
     public void createAccount(){
-        String fullName, ssn, accountType;
-        double initialDeposit;
+        String firstName, lastName, ssn, dateOfBirth,accountType = "";
+        double initialDeposit = 0;
         boolean valid = false;
+
+        /** Checks to make sure that user inputs valid account type**/
         while(!valid){
             System.out.println("Enter in a valid account type (i.e. checking, savings): ");
             accountType = fromTerminal.nextLine();
@@ -83,11 +86,53 @@ public class BankMenu {
                 System.out.println("Input denied! Please enter in checking or savings.");
             }
         }
-        System.out.println("Please enter your first & last name: ");
-        fullName=fromTerminal.nextLine();
+
+        System.out.println("Please enter your first name: ");
+        firstName=fromTerminal.nextLine();
+        System.out.println("Please enter your last name: ");
+        lastName=fromTerminal.nextLine();
+        //System.out.println("Please enter you date of birth: ");
+       // dateOfBirth=fromTerminal.nextLine();
         System.out.println("Please enter your SSN: ");
         ssn=fromTerminal.nextLine();
 
+        /** Checks to make sure that user inputs minimum amount for both Checking and Savings**/
         valid = false;
+        while(!valid) {
+            System.out.println("Please enter a minimum deposit: ");
+            try{
+                initialDeposit = Double.parseDouble(fromTerminal.nextLine());
+            }
+            catch(NumberFormatException e){
+                System.out.println("Deposit must be a number.");
+            }
+            if(accountType.equalsIgnoreCase("checking" )){
+                if (initialDeposit < 100){
+                    System.out.println("Enter valid amount (Minimum = $100): ");
+                }
+                else{
+                    valid = true;
+                }
+            }else if(accountType.equalsIgnoreCase("Savings")){
+                if (initialDeposit < 50){
+                    System.out.println("Enter valid amount (Minimum = $50): ");
+                }
+                else {
+                    valid=true;
+                }
+            }
+        }
+
+        Account account;
+        if (accountType.equalsIgnoreCase("checking")){
+            account = new Checking(initialDeposit);
+        }
+        else{
+            account = new Savings(initialDeposit);
+        }
+
+        BankCustomer customer = new BankCustomer(firstName, lastName, ssn, account);
+        SecureBank.addCustomer();
+
     }
 }

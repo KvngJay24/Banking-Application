@@ -1,4 +1,54 @@
+import java.util.Random;
 public class Account {
-    double balance;
-    double amount;
+    double balance = 0;
+    double interest = 0.75;
+   // double accountNum;
+
+
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getInterest() {
+        return interest * 100;
+    }
+
+    public void setInterest(double interest) {
+        this.interest = interest;
+    }
+
+  /**  public double getAccountNum() {
+        return accountNum;
+    }**/
+
+  public void deposit(double amount){
+      balance+=amount;
+      System.out.println("You have deposited: $" + amount);
+      System.out.println("Your balance is now: $" + balance);
+  }
+
+  public void withdraw(double amount){
+      if (amount <= balance){
+          balance -= amount;
+      }
+      else {
+          return;
+      }
+    }
+
+    /*private void overDraft(double amount) {
+      if(amount > balance){
+        balance = 35;
+        System.out.println("Transaction Success!");
+        System.out.println("Your balance is now: $-" + balance);
+      }
+      return;
+    }*/
 }
+
+
