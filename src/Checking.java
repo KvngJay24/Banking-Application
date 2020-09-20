@@ -15,7 +15,7 @@ public class Checking extends Account {
     @Override
     public String toString(){
         return "Account Type: " + accountType + "Account\n" +
-        // System.out.println("Account #: " + accountType";
+         "Account #: " + this.getAccountNum() + accountType +
         "Balance: " + this.getBalance() + "\n";
     }
 }

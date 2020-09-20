@@ -1,4 +1,7 @@
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class BankMenu {
@@ -91,8 +94,9 @@ public class BankMenu {
         firstName=fromTerminal.nextLine();
         System.out.println("Please enter your last name: ");
         lastName=fromTerminal.nextLine();
-        //System.out.println("Please enter you date of birth: ");
-       // dateOfBirth=fromTerminal.nextLine();
+        System.out.println("Please enter you date of birth: ");
+        DateOfBirth();
+
         System.out.println("Please enter your SSN: ");
         ssn=fromTerminal.nextLine();
 
@@ -133,6 +137,23 @@ public class BankMenu {
 
         BankCustomer customer = new BankCustomer(firstName, lastName, ssn, account);
         SecureBank.addCustomer();
+
+    }
+
+    public void DateOfBirth(){
+        boolean valid = false;
+        SimpleDateFormat dateOfBirth = new SimpleDateFormat("dd/MM/yyyy");
+        Date date;
+        dateOfBirth.setLenient(false);
+
+        do {
+            try{
+                date = dateOfBirth.parse(fromTerminal.nextLine());
+            }
+            catch(Exception e){
+                System.out.println("Please input valid date format. (i.e. dd/MM/yyyy)");
+            }
+        }while (!valid);
 
     }
 }
