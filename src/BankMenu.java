@@ -1,6 +1,6 @@
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -74,7 +74,7 @@ public class BankMenu {
     }
 
     public void createAccount(){
-        String firstName, lastName, ssn, dateOfBirth,accountType = "";
+        String firstName, lastName, ssn,accountType = "";
         double initialDeposit = 0;
         boolean valid = false;
 
@@ -92,8 +92,10 @@ public class BankMenu {
 
         System.out.println("Please enter your first name: ");
         firstName=fromTerminal.nextLine();
+
         System.out.println("Please enter your last name: ");
         lastName=fromTerminal.nextLine();
+
         System.out.println("Please enter you date of birth: ");
         DateOfBirth();
 
@@ -145,10 +147,10 @@ public class BankMenu {
         SimpleDateFormat dateOfBirth = new SimpleDateFormat("dd/MM/yyyy");
         Date date;
         dateOfBirth.setLenient(false);
-
         do {
             try{
                 date = dateOfBirth.parse(fromTerminal.nextLine());
+                valid = true;
             }
             catch(Exception e){
                 System.out.println("Please input valid date format. (i.e. dd/MM/yyyy)");
