@@ -18,4 +18,20 @@ public class Checking extends Account {
          "Account #: " + this.getAccountNum() + accountType +
         "Balance: " + this.getBalance() + "\n";
     }
+
+    public void MinBalance(){
+        if (balance <= 99){
+            System.out.println("Your account is at: $" + balance + "\n");
+            System.out.println("You have been charged: $" + MinBalanceFee() + ".\n");
+        }
+    }
+
+    private double MinBalanceFee(){
+        double fee;
+        fee = 25;
+
+        fee-=balance;
+
+        return fee;
+    }
 }

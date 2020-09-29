@@ -158,4 +158,8 @@ public class BankMenu {
         }while (!valid);
 
     }
+
+    public void socialSecurity(){
+
+    }
 }

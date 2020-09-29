@@ -44,14 +44,7 @@ public class Account {
       }
     }
 
-    /*private void overDraft(double amount) {
-      if(amount > balance){
-        balance = 35;
-        System.out.println("Transaction Success!");
-        System.out.println("Your balance is now: $-" + balance);
-      }
-      return;
-    }*/
+
 }
 
 
