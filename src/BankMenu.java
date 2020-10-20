@@ -60,7 +60,7 @@ public class BankMenu {
 
     public void softwareAction(int options){
         switch(options){
-            case 1: // User SIgn in
+            case 1: // User Sign in
             case 2:
                 createAccount();
                 break;

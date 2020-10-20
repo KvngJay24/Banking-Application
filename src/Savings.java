@@ -19,4 +19,22 @@ public class Savings extends Account {
                 "Balance: " + this.getBalance() + "\n" +
                 "Interest Rate: " + this.getInterest() + "%/n";
     }
+
+    public double MinBalance(){
+        double fee_charged = MinBalanceFee();
+        if (balance > 5){
+            System.out.println("Your account is at: $" + balance + "\n");
+            System.out.println("You have been charged: $" + fee_charged + ".\n");
+        }
+        return fee_charged;
+    }
+
+    private double MinBalanceFee(){
+        double fee;
+        fee = 5;
+
+        balance=balance-fee;
+
+        return fee;
+    }
 }

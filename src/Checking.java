@@ -19,18 +19,20 @@ public class Checking extends Account {
         "Balance: " + this.getBalance() + "\n";
     }
 
-    public void MinBalance(){
-        if (balance <= 99){
-            System.out.println("Your account is at: $" + balance + "\n");
-            System.out.println("You have been charged: $" + MinBalanceFee() + ".\n");
+    public double overDraft() {
+        double fee_charged = 0.0;
+        if (35.0 < balance) {
+            fee_charged = overDraftFee();
+            System.out.println("You have been charge a $"+ fee_charged +" fee.");
+            System.out.println("You have insufficient funds.");
         }
+        return fee_charged;
     }
 
-    private double MinBalanceFee(){
-        double fee;
-        fee = 25;
+    private double overDraftFee(){
+        double fee = 35;
 
-        fee-=balance;
+        balance= balance-fee;
 
         return fee;
     }

@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.Scanner;
+
 public class Account {
     double balance = 0;
     double interest = 0.75;
@@ -38,13 +40,13 @@ public class Account {
   public void withdraw(double amount){
       if (amount <= balance){
           balance -= amount;
+          System.out.println("Your account has: $" + balance);
       }
       else {
-          return;
+          System.out.println("Withdrawal failed.");
       }
-    }
-
-
+  }
 }
+
 
 
