@@ -16,7 +16,7 @@ public class BankMenu {
         BankMenu menu = new BankMenu();
         menu.intiateMenu();
     }
-        boolean quit;
+    boolean quit;
 
 
     public void intiateMenu(){
@@ -195,10 +195,10 @@ public class BankMenu {
 
     public boolean emailValidation(){
 
-            String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
-            Pattern ePattern = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = ePattern.matcher(fromTerminal.nextLine());
-            return matcher.find();
+        String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern ePattern = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = ePattern.matcher(fromTerminal.nextLine());
+        return matcher.find();
     }
 
 
@@ -252,17 +252,17 @@ public class BankMenu {
     private static final String encode_format = "UTF-8";
 
     public static byte[] PasswordEncryption(String dataEncrypt, SecretKey mykey, Cipher cipher){
-    try{
-        byte[] passphrase = dataEncrypt.getBytes(encode_format);
-        cipher.init(Cipher.ENCRYPT_MODE,mykey);
-        byte[] infoEncrypt = cipher.doFinal(passphrase);
-        return infoEncrypt;
+        try{
+            byte[] passphrase = dataEncrypt.getBytes(encode_format);
+            cipher.init(Cipher.ENCRYPT_MODE,mykey);
+            byte[] infoEncrypt = cipher.doFinal(passphrase);
+            return infoEncrypt;
 
-    }
-    catch(Exception e){
-        return null;
-    }
+        }
+        catch(Exception e){
+            return null;
+        }
     }
 
 
-    }
+}

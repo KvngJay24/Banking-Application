@@ -1,4 +1,4 @@
-////import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 //
 //import static org.junit.jupiter.api.Assertions.*;
 //
@@ -6,7 +6,7 @@
 //
 //    @Test
 //    void overDraft() {
-//        Checking c = new Checking(250, balance);
+//        Checking c = new Checking(250);
 //        assertEquals(35.0, c.overDraft());
 //    }
 //}
