@@ -1,12 +1,21 @@
 import java.util.ArrayList;
 
 public class SecureBank {
-    ArrayList<BankCustomer> customers = new ArrayList<BankCustomer>();
+   private DatabaseService database = new DatabaseService();
 
-    public static void addCustomer() {
+//   int openAcc(String fname, String lname, String ssn, AccType accType, double balance){
+//       return database.addAccount(fname,lname,ssn,accType,balance);
+//   }
+
+    BankCustomer getCustomer(int accountId){
+       return database.GetAccount(accountId);
     }
 
-    public void addCustomer(BankCustomer customer) {
-        customers.add(customer);
+    ArrayList<BankCustomer> getBankCustomers(){
+       return database.GetAllAcc();
+    }
+
+    boolean closeAcc(int accountId){
+       return database.DelAccount(accountId);
     }
 }

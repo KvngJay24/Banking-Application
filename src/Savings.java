@@ -1,7 +1,7 @@
 public class Savings extends Account {
     public static String accountType = "Savings";
 
-    Savings(double initialDeposit) {
+    Savings(double initialDeposit, double balance) {
         super.setBalance(initialDeposit);
 
         if (initialDeposit < 15000){

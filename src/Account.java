@@ -1,5 +1,4 @@
-import java.util.Random;
-import java.util.Scanner;
+
 
 public class Account {
     double balance = 0;
@@ -32,6 +31,9 @@ public class Account {
     }
 
   public void deposit(double amount){
+        if (amount < 0){
+            System.out.println("Deposit must be positive or a valid amount.");
+        }
       balance+=amount;
       System.out.println("You have deposited: $" + amount);
       System.out.println("Your balance is now: $" + balance);
